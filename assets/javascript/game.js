@@ -11,6 +11,14 @@ var dictionary = ["sad", "bad", "cool"];
 function getRandomElement(inputArray){
     return inputArray[(Math.floor(Math.random() * (inputArray.length - 1)))];
 }
+
+function obfuscateArray(inputArray){
+    var tempArray = inputArray;
+    return tempArray.forEach(
+        function(current, index){
+            tempArray[index] = "*";
+    })
+}
 // make an empty array of the letters already guessed by the user
 // decide on a random word to be the target word
 // turn the word into an array of its component letters
@@ -18,9 +26,16 @@ function getRandomElement(inputArray){
 //  correctly guessed letters by the player
 function gameReset() {
     guessedLetters = [""];
+    guessesLeft = guessesAllotted;
     targetWord = getRandomElement(dictionary).split("");
-
+    
 }
+
+var test1 = "awesome".split("");
+var test2;
+console.log (test1);
+console.log (test2 = obfuscateArray(test1));
+console.log (test1);
 
 // get user guess
 // clean user input
