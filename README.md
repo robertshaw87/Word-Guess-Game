@@ -5,9 +5,9 @@ Description of Game Here
 
 ## Getting Started
 
-Open up the [project link](https://robertshaw87.github.io/Psychic-Game/) and you should be able to see the example webpage shown below:
+Open up the [project link](https://robertshaw87.github.io/Word-Guess-Game/) and you should be able to see the example webpage shown below:
 
-![Psychic Game](assets/images/readme-game.png "Psychic Game")
+![Word Guess Game](assets/images/readme-game.png "Word Guess Game")
 
 INSTRUCTIONS HERE
 

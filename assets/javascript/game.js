@@ -1,10 +1,26 @@
 // declare initial variable values
+var wins = 0;
+var losses = 0;
+var guessesAlloted = 7;
+var guessesLeft, guessedLetters, targetWord, userGuess, userWord;
+
 // make an array of potential words
+var dictionary = ["sad", "bad", "cool"];
+
+// function to get a random element from an input array
+function getRandomElement(inputArray){
+    return inputArray[(Math.floor(Math.random() * (inputArray.length - 1)))];
+}
 // make an empty array of the letters already guessed by the user
 // decide on a random word to be the target word
 // turn the word into an array of its component letters
 // make an array of place holder characters to represent
 //  correctly guessed letters by the player
+function gameReset() {
+    guessedLetters = [""];
+    targetWord = getRandomElement(dictionary).split("");
+
+}
 
 // get user guess
 // clean user input
