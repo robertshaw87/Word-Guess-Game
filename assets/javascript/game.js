@@ -12,14 +12,17 @@ function getRandomElement(inputArray){
     return inputArray[(Math.floor(Math.random() * (inputArray.length - 1)))];
 }
 
+// return an array of the same length as the input array with each element replaced with asterisks
+// this should not change the input array
 function obfuscateArray(inputArray){
-    var tempArray = inputArray;
-    return tempArray.forEach(
+    var tempArray = inputArray.slice();
+    tempArray.forEach(
         function(current, index){
             tempArray[index] = "*";
     })
+    return tempArray;
 }
-// make an empty array of the letters already guessed by the user
+// make an array of the letters already guessed by the user
 // decide on a random word to be the target word
 // turn the word into an array of its component letters
 // make an array of place holder characters to represent
@@ -28,14 +31,9 @@ function gameReset() {
     guessedLetters = [""];
     guessesLeft = guessesAllotted;
     targetWord = getRandomElement(dictionary).split("");
+    userWord = obfuscateArray(targetWord);
     
 }
-
-var test1 = "awesome".split("");
-var test2;
-console.log (test1);
-console.log (test2 = obfuscateArray(test1));
-console.log (test1);
 
 // get user guess
 // clean user input
