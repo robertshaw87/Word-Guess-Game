@@ -53,12 +53,10 @@ function compareArrays(arr1, arr2) {
                 return false;
             }
             console.log("nested array recursion end");
-        } else {
-            // if not nested arrays, check value of elements against each other
-            if (arr1[i] !== arr2[i]) {
-                console.log("checking array elements " + arr1[i] + " and " + arr2[i]);
-                return false;
-            }
+        } else if (arr1[i] !== arr2[i]) {
+        // if not nested arrays, check value of elements against each other
+            console.log("checking array elements " + arr1[i] + " and " + arr2[i]);
+            return false;
         }
     }
     // returns true if the arrays pass all the above checks
@@ -95,19 +93,23 @@ document.onkeyup = function(userInput) {
     // ignore any key that isn't a letter
     if (-1 === alphabet.indexOf(userGuess)) {
         getElem("playerMessage").textContent = "Please guess a letter between A-Z.";
-    } else {
-    // check user input to make sure it is a new guess
-    if (-1 !== guessedLetters.indexOf(userGuess)) {
+    } else if (-1 !== guessedLetters.indexOf(userGuess)) {
+        // check user input to make sure it is a new guess
         getElem("playerMessage").textContent = "You have already guessed " + userGuess;
-    } else {
+    } else if (targetWord.indexOf(userGuess) !== -1) {
         // if it is a letter within the correct word array,
-        if (targetWord.indexOf(userGuess) !== -1) {
         // replace the correct placeholder characters in the guess array 
         //  with the letter guessed
-        
-        }
 
+    } else {
+        
     }
+
+    getElem("wins").textContent = wins;
+    getElem("losses").textContent = losses;
+    getElem("guesses").textContent = guessesLeft;
+
+}
 
 
 
