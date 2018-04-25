@@ -11,14 +11,39 @@
     <!-- My CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
 
-    <!-- My Javascript -->
-
-    <script src="assets/javascript/game.js"></script>
-
     <title>Word Guess Game</title>
   </head>
   <body>
-    <h1>Word Guess Game</h1>
+    <header>
+      <h1 class="container text-center">Word Guess Game</h1>
+    </header>
+
+    <main class="container text-center">
+      <div class="row mt-5">
+        <h3 class="col-md-2">Wins: <span id="wins"></span></h3>
+        <h3 class="col-md-8"></h3>
+        <h3 class="col-md-2">Losses: <span id="losses"></span></h3>
+      </div>
+      <div class="row mt-5">
+        <div class="col"></div>
+        <div class="col-md-6"><h2 id="wordProgress"></h2></div>
+        <div class="col"></div>
+      </div>
+      <div class="row mt-5">
+        <div class="col-md-5"></div>
+        <h3 class="col-md-2">Guesses left: <span id="guesses"></span></h3>
+        <div class="col-md-5"></div>
+      </div>
+      <div class="row mt-5">
+        <h3>Your guesses so far: <span id="playerChoices"></span></h3>
+      </div>
+      <div class="row mt-5">
+        <h2 id="playerMessage"></h2>
+      </div>
+    </main>
+
+    <!-- My Javascript -->
+    <script src="assets/javascript/game.js"></script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

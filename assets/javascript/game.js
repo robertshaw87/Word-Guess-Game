@@ -1,39 +1,82 @@
 // declare initial variable values
 var wins = 0;
 var losses = 0;
-var guessesAlloted = 7;
-var guessesLeft, guessedLetters, targetWord, userGuess, userWord;
+// this is the number of guesses the user has
+var guessesAllotted = 7;
+var guessesLeft, guessedLetters, targetWord, userGuess, wordProgress;
 
 // make an array of potential words
-var dictionary = ["sad", "bad", "cool"];
+var dictionary = ["sad", "bad", "cool", "random", "super"];
 
 // function to get a random element from an input array
 function getRandomElement(inputArray){
-    return inputArray[(Math.floor(Math.random() * (inputArray.length - 1)))];
+    return inputArray[(Math.floor(Math.random() * inputArray.length))];
 }
 
 // return an array of the same length as the input array with each element replaced with asterisks
 // this should not change the input array
 function obfuscateArray(inputArray){
-    var tempArray = inputArray.slice();
-    tempArray.forEach(
-        function(current, index){
-            tempArray[index] = "*";
-    })
+    var tempArray = [];
+    for (var i=0; i<inputArray.length; i++){
+        tempArray.push("*");
+    }
     return tempArray;
 }
+
+// compares two input arrays and returns whether they're equivalent
+function compareArrays(arr1, arr2) {
+    console.log("compare arrays call with [" + arr1 + "] and [" + arr2 + "]");
+    // return false if either argument isn't an array
+    if (!Array.isArray(arr1) || !Array.isArray(arr2)){
+        console.log("inputs aren't both arrays");
+        return false;
+    }
+    // return false if the two arrays aren't the same length
+    if (arr1.length !== arr2.length) {
+        console.log("input arrays aren't the same length");
+        return false;
+    }
+    // iterate through every element of input arrays
+    console.log("iterating through arrays");
+    for (var i=0; i < arr1.length; i++){
+        // check for nested arrays
+        if (Array.isArray(arr1[i]) && Array.isArray(arr2[i])) {
+            // compare nested arrays, if not equivalent, return false, 
+            // else continue iterating
+            console.log("nested array found, recursing");
+            if (!compareArrays(arr1[i], arr2[i])){
+                console.log("nested array elements not equivalent");
+                return false;
+            }
+            console.log("nested array recursion end");
+        } else {
+            // if not nested arrays, check value of elements against each other
+            if (arr1[i] !== arr2[i]) {
+                console.log("checking array elements " + arr1[i] + " and " + arr2[i]);
+                return false;
+            }
+        }
+    }
+    // returns true if the arrays pass all the above checks
+    return true;
+}
+
+
 // make an array of the letters already guessed by the user
 // decide on a random word to be the target word
 // turn the word into an array of its component letters
 // make an array of place holder characters to represent
 //  correctly guessed letters by the player
 function gameReset() {
-    guessedLetters = [""];
+    guessedLetters = [];
     guessesLeft = guessesAllotted;
-    targetWord = getRandomElement(dictionary).split("");
-    userWord = obfuscateArray(targetWord);
-    
+    targetWord = getRandomElement(dictionary).toUpperCase().split("");
+    wordProgress = obfuscateArray(targetWord);
+    console.log(targetWord);
+    console.log(wordProgress);
 }
+
+gameReset();
 
 // get user guess
 // clean user input
