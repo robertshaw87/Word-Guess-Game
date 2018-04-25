@@ -12,6 +12,11 @@ alphabet = alphabet.split("");
 // make an array of potential words
 var dictionary = ["sad", "bad", "cool", "random", "super"];
 
+// get a pointer to an element in the html when provided with a link
+function getElem(id) {
+    return document.getElementById(id);
+}
+
 // function to get a random element from an input array
 function getRandomElement(inputArray){
     return inputArray[(Math.floor(Math.random() * inputArray.length))];
@@ -75,7 +80,11 @@ function gameReset() {
     targetWord = getRandomElement(dictionary).toUpperCase().split("");
     wordProgress = obfuscateArray(targetWord);
     console.log(targetWord);
-    console.log(wordProgress);
+    getElem("wins").textContent = wins;
+    getElem("losses").textContent = losses;
+    getElem("wordProgress").textContent = wordProgress.join(" ");
+    getElem("guesses").textContent = guessesLeft;
+    getElem("playerChoices").textContent = "";
 }
 
 gameReset();
@@ -100,9 +109,33 @@ document.onkeyup = function(userInput) {
         // if it is a letter within the correct word array,
         // replace the correct placeholder characters in the guess array 
         //  with the letter guessed
+        for (var i=0; i < targetWord.length; i++){
+            if (targetWord[i] === userGuess) {
+                wordProgress[i] = userGuess;
+            }
+        }
+        getElem("wordProgress").textContent = wordProgress.join(" ");
+
+        // check if word has been completed
+        if (wordProgress.join("") === targetWord.join("")) {
+            wins += 1;
+            getElem("playerMessage").textContent = "You guessed the correct word! It was " + targetWord.join("") + "!";
+            gameReset();
+        }
 
     } else {
-        
+        // if it is not a correct letter,
+        // add guess to already guessed array, reduce guesses left
+        guessedLetters.push(userGuess);
+        guessesLeft -= 1;
+        getElem("playerChoices").textContent = guessedLetters.join(" ");
+
+        // if there are no guesses left, increment losses, reset game
+        if (guessesLeft <= 0){
+            losses += 1;
+            getElem("playerMessage").textContent = "You ran out of guesses! The correct word was " + targetWord.join("") + "!";
+            gameReset();
+        }
     }
 
     getElem("wins").textContent = wins;
@@ -124,8 +157,7 @@ document.onkeyup = function(userInput) {
 // set a new random word to be guessed and 
 //  format the guess array and word array
 
-// if it is not a correct letter,
-// add guess to already guessed array, reduce guesses left
+
 
 // if there are no guesses left, increment losses, reset game
 // else go back to getting user input
