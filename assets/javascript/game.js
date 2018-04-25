@@ -5,6 +5,10 @@ var losses = 0;
 var guessesAllotted = 7;
 var guessesLeft, guessedLetters, targetWord, userGuess, wordProgress;
 
+// make an array of the alphabet
+var alphabet = "abcdefghijklmnopqrstuvwxyz".toUpperCase();
+alphabet = alphabet.split("");
+
 // make an array of potential words
 var dictionary = ["sad", "bad", "cool", "random", "super"];
 
@@ -79,15 +83,38 @@ function gameReset() {
 gameReset();
 
 // get user guess
-// clean user input
+document.onkeyup = function(userInput) {
+    
+    getElem("playerMessage").textContent = "";
+    
+    // clean user input
+    userGuess = userInput.key;
+    userGuess = userGuess.toUpperCase();
+    console.log("User Guess: " + userGuess);
 
-// check user input to make sure it is a new guess
+    // ignore any key that isn't a letter
+    if (-1 === alphabet.indexOf(userGuess)) {
+        getElem("playerMessage").textContent = "Please guess a letter between A-Z.";
+    } else {
+    // check user input to make sure it is a new guess
+    if (-1 !== guessedLetters.indexOf(userGuess)) {
+        getElem("playerMessage").textContent = "You have already guessed " + userGuess;
+    } else {
+        // if it is a letter within the correct word array,
+        if (targetWord.indexOf(userGuess) !== -1) {
+        // replace the correct placeholder characters in the guess array 
+        //  with the letter guessed
+        
+        }
+
+    }
+
+
 
 // add the letter to the already guessed array
 
-// if it is a letter within the correct word array,
-// replace the correct placeholder characters in the guess array 
-//  with the letter guessed
+
+
 
 // if the guess array is completed and equal to the word array,
 // add 1 to wins, reset guesses, already guessed array,
