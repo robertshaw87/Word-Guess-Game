@@ -33,6 +33,7 @@ function obfuscateArray(inputArray){
 }
 
 // compares two input arrays and returns whether they're equivalent
+// not used in this implementation, but it can handle nested arrays
 function compareArrays(arr1, arr2) {
     console.log("compare arrays call with [" + arr1 + "] and [" + arr2 + "]");
     // return false if either argument isn't an array
@@ -118,6 +119,7 @@ document.onkeyup = function(userInput) {
 
         // check if word has been completed
         if (wordProgress.join("") === targetWord.join("")) {
+            // add 1 to wins, reset game
             wins += 1;
             getElem("playerMessage").textContent = "You guessed the correct word! It was " + targetWord.join("") + "!";
             gameReset();
@@ -143,21 +145,3 @@ document.onkeyup = function(userInput) {
     getElem("guesses").textContent = guessesLeft;
 
 }
-
-
-
-// add the letter to the already guessed array
-
-
-
-
-// if the guess array is completed and equal to the word array,
-// add 1 to wins, reset guesses, already guessed array,
-//  and guess array to default
-// set a new random word to be guessed and 
-//  format the guess array and word array
-
-
-
-// if there are no guesses left, increment losses, reset game
-// else go back to getting user input
