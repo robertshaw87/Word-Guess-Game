@@ -10,7 +10,9 @@ var alphabet = "abcdefghijklmnopqrstuvwxyz".toUpperCase();
 alphabet = alphabet.split("");
 
 // make an array of potential words
-var dictionary = ["sad", "bad", "cool", "random", "super"];
+var dictionary = ["Eridanus", "Cassiopeia", "Scorpius", "Crux", "Andromeda", "Sagittarius", "Cygnus", "Cepheus", 
+                    "Draco", "Delphinus", "Pegasus", "Perseus", "Corvus", "Pisces", "Vela", "Aquila", "Serpens", 
+                    "Phoenix", "Vulpecula", "Carina", "Hercules", "Hydra", "Delphinus", "Lyra", "Capricornus"];
 
 // get a pointer to an element in the html when provided with a link
 function getElem(id) {

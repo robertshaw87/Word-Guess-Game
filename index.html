@@ -14,15 +14,21 @@
     <title>Word Guess Game</title>
   </head>
   <body>
-    <header>
-      <h1 class="container text-center mt-3">Word Guess Game</h1>
+    <header class ="bg-dark border-bottom border-light" id="header">
+      <h1 class="container text-center p-3 text-light mr-auto ml-auto">Word Guess Game</h1>
     </header>
 
     <main class="container text-center">
       <div class="row mt-5">
-        <h3 class="col-md-2">Wins: <span id="wins"></span></h3>
+        <div class="card p-0 col-md-2">
+          <h3 class="card-header bg-success text-light" id="winsCard">Wins</h3>
+          <h2 class="card-body m-0 bg-light" id="wins"></h2>
+        </div>
         <h3 class="col-md-8"></h3>
-        <h3 class="col-md-2">Losses: <span id="losses"></span></h3>
+        <div class="card p-0 col-md-2">
+          <h3 class="card-header bg-danger text-light" id="lossesCard">Losses</h3>
+          <h2 class="card-body m-0 bg-light" id="losses"></h2>
+        </div>
       </div>
       <div class="row mt-5">
         <div class="col"></div>
