@@ -10,9 +10,9 @@ var alphabet = "abcdefghijklmnopqrstuvwxyz".toUpperCase();
 alphabet = alphabet.split("");
 
 // make an array of potential words
-var dictionary = ["Eridanus", "Cassiopeia", "Scorpius", "Crux", "Andromeda", "Sagittarius", "Cygnus", "Cepheus", 
+var dictionary = ["Eridanus", "Scorpius", "Crux", "Andromeda", "Cygnus", "Cepheus", 
                     "Draco", "Delphinus", "Pegasus", "Perseus", "Corvus", "Pisces", "Vela", "Aquila", "Serpens", 
-                    "Phoenix", "Vulpecula", "Carina", "Hercules", "Hydra", "Delphinus", "Lyra", "Capricornus"];
+                    "Phoenix", "Vulpecula", "Carina", "Hercules", "Hydra", "Delphinus", "Lyra"];
 
 // get a pointer to an element in the html when provided with a link
 function getElem(id) {
@@ -85,9 +85,40 @@ function gameReset() {
     console.log(targetWord);
     getElem("wins").textContent = wins;
     getElem("losses").textContent = losses;
-    getElem("wordProgress").textContent = wordProgress.join(" ");
     getElem("guesses").textContent = guessesLeft;
     getElem("playerChoices").textContent = "";
+    displayProgress();
+}
+
+// append an empty col to the element passed in as an argument
+function appendEmptyCol(id){
+    var emptyCol=$("<div>");
+    emptyCol.attr("class", "col");
+    id.append(emptyCol)
+}
+
+// this function displays the progress the player has made towards the word
+function displayProgress() {
+    var cardProgress = $("#wordProgress");
+    cardProgress.empty();
+    appendEmptyCol(cardProgress);
+
+    for (var i=0; i<wordProgress.length; i++){
+        var letterCard = $("<div>");
+        letterCard.attr("class","card m-1 p-1 pt-2 pb-2 col-md-1 bg-dark text-light");
+        var cardText = $("<div>");
+        cardText.attr("class", "card-text");
+        var cardLetter = $("<h2>");
+        cardLetter.text(wordProgress[i]);
+        cardText.append(cardLetter);
+        letterCard.append(cardText);
+        cardProgress.append(letterCard);
+    }
+    appendEmptyCol(cardProgress);
+}
+
+function displayGuessesLeft() {
+
 }
 
 gameReset();
@@ -117,7 +148,8 @@ document.onkeyup = function(userInput) {
                 wordProgress[i] = userGuess;
             }
         }
-        getElem("wordProgress").textContent = wordProgress.join(" ");
+        displayProgress();
+        // getElem("wordProgress").textContent = wordProgress.join(" ");
 
         // check if word has been completed
         if (wordProgress.join("") === targetWord.join("")) {
