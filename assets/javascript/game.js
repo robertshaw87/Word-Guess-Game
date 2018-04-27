@@ -85,7 +85,8 @@ function gameReset() {
     console.log(targetWord);
     getElem("wins").textContent = wins;
     getElem("losses").textContent = losses;
-    getElem("guesses").textContent = guessesLeft;
+    // getElem("guesses").textContent = guessesLeft;
+    displayGuessesLeft();
     getElem("playerChoices").textContent = "";
     displayProgress();
 }
@@ -118,6 +119,16 @@ function displayProgress() {
 }
 
 function displayGuessesLeft() {
+    var guessesStars = $("#guesses");
+    guessesStars.empty();
+
+    for (var i=0; i<guessesLeft; i++){
+        var starPic = $("<div>");
+        starPic.attr("class", "col-md-3 m-0 p-0");
+        starPic.append("<img height=auto width=100% src='assets/images/star.png' alt='star'>");
+        console.log(starPic);
+        guessesStars.append(starPic);
+    }
 
 }
 
@@ -176,6 +187,7 @@ document.onkeyup = function(userInput) {
 
     getElem("wins").textContent = wins;
     getElem("losses").textContent = losses;
-    getElem("guesses").textContent = guessesLeft;
+    displayGuessesLeft();
+    // getElem("guesses").textContent = guessesLeft;
 
 }

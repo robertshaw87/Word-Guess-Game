@@ -28,11 +28,14 @@
     <div class="row mt-5">
       <div class="card p-0 col-md-2 border-secondary">
         <h3 class="card-header bg-success text-light" id="winsCard">Wins</h3>
+        <!-- hook to display wins -->
         <h2 class="card-body m-0 bg-light" id="wins"></h2>
       </div>
-      <h3 class="col-md-8" id="playerMessage"></h3>
+      <!-- hook to display a message to the player -->
+      <h3 class="col-md-8 text-light" id="playerMessage"></h3>
       <div class="card p-0 col-md-2 border-secondary">
         <h3 class="card-header bg-danger text-light" id="lossesCard">Losses</h3>
+        <!-- hook to display losses -->
         <h2 class="card-body m-0 bg-light" id="losses"></h2>
       </div>
     </div>
@@ -40,8 +43,8 @@
     <div class="row mt-5">
       <div class="col-md-2"></div>
       <div class="col-md-8">
+        <!-- hook to display progress on word guess -->
         <div class="row text-center" id="wordProgress"></div>
-        <!-- <div class="card-text text-light pt-5 pb-5"><h2 id="wordProgress"></h2></div> -->
       </div>
       <div class="col-md-2"></div>
     </div>
@@ -55,20 +58,24 @@
           </div>
           <div class="col-md-1"></div>
         </div>
+        <!-- hook to display number of guesses left -->
         <div class="row text-center" id="guesses"></div>
       </div>
       <div class="col-md-2"></div>
       <div class="col-md-5">
-        <h3>Your guesses so far:
-          <span id="playerChoices"></span>
-        </h3>
+        <div class="row text-center text-light">
+          <div class="col-md-1"></div>
+          <div class="col">
+            <h3>Guesses so far:</h3>
+          </div>
+          <div class="col-md-1"></div>
+        </div>
+        <!-- hook to display letters already guessed -->
+        <div class="row text-center" id="playerChoices"></div>
       </div>
     </div>
     <div class="row mt-5">
 
-    </div>
-    <div class="row mt-5">
-      <h2 id="playerMessage"></h2>
     </div>
   </main>
 
