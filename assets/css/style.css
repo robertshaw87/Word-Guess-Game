@@ -8,6 +8,12 @@ body {
 /* reduce opacity of header to be less intrusive */
 header {
     opacity: .8;
+    font-family: 'Cinzel Decorative', cursive;
+}
+
+/* change the font of guesses left and guesses so far */
+.sub-title {
+    font-family: 'Audiowide', cursive;
 }
 
 /* add animation to wins and losses cards upon load */
@@ -15,12 +21,14 @@ header {
     animation-name: card-animation;
     animation-duration: .6s;
     opacity: .8;
+    font-family: 'Audiowide', cursive;
 }
 
 #lossesCard {
     animation-name: card-animation;
     animation-duration: .6s;
     opacity: .8;
+    font-family: 'Audiowide', cursive;
 }
 
 @keyframes card-animation {

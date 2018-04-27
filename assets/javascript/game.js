@@ -77,10 +77,8 @@ function gameReset() {
     console.log(targetWord);
     getElem("wins").textContent = wins;
     getElem("losses").textContent = losses;
-    // getElem("guesses").textContent = guessesLeft;
     displayGuessesLeft();
     displayGuessedLetters()
-    // getElem("playerChoices").textContent = "";
     displayProgress();
 }
 
@@ -202,7 +200,6 @@ $(document).ready(function() {
             guessedLetters.push(userGuess);
             guessesLeft -= 1;
             displayGuessedLetters()
-            // getElem("playerChoices").textContent = guessedLetters.join(" ");
 
             // if there are no guesses left, increment losses, reset game
             if (guessesLeft <= 0){
@@ -215,7 +212,6 @@ $(document).ready(function() {
         getElem("wins").textContent = wins;
         getElem("losses").textContent = losses;
         displayGuessesLeft();
-        // getElem("guesses").textContent = guessesLeft;
 
     }
 });
