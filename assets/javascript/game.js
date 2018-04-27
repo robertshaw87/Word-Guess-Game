@@ -37,33 +37,25 @@ function obfuscateArray(inputArray){
 // compares two input arrays and returns whether they're equivalent
 // not used in this implementation, but it can handle nested arrays
 function compareArrays(arr1, arr2) {
-    console.log("compare arrays call with [" + arr1 + "] and [" + arr2 + "]");
     // return false if either argument isn't an array
     if (!Array.isArray(arr1) || !Array.isArray(arr2)){
-        console.log("inputs aren't both arrays");
         return false;
     }
     // return false if the two arrays aren't the same length
     if (arr1.length !== arr2.length) {
-        console.log("input arrays aren't the same length");
         return false;
     }
     // iterate through every element of input arrays
-    console.log("iterating through arrays");
     for (var i=0; i < arr1.length; i++){
         // check for nested arrays
         if (Array.isArray(arr1[i]) && Array.isArray(arr2[i])) {
             // compare nested arrays, if not equivalent, return false, 
             // else continue iterating
-            console.log("nested array found, recursing");
             if (!compareArrays(arr1[i], arr2[i])){
-                console.log("nested array elements not equivalent");
                 return false;
             }
-            console.log("nested array recursion end");
         } else if (arr1[i] !== arr2[i]) {
         // if not nested arrays, check value of elements against each other
-            console.log("checking array elements " + arr1[i] + " and " + arr2[i]);
             return false;
         }
     }
@@ -128,7 +120,6 @@ function displayGuessesLeft() {
         var starPic = $("<div>");
         starPic.attr("class", "col-md-3 col-1 col-sm-1 m-0 p-0 guessesStar");
         starPic.append("<img height=auto width=100% src='assets/images/star.png' alt='star'>");
-        console.log(starPic);
         guessesStars.append(starPic);
     }
 
@@ -155,14 +146,21 @@ function displayGuessedLetters(){
     appendEmptyCol(wrongGuesses);
 }
 
+function playerMessageAstronaut() {
+    var message = $("#playerMessage");
+    message.empty();
+    message.append("<img id='astronautPic' height=120px width=auto src='assets/images/astronaut.png' alt='astronaut'>");
+}
 
 // reset the game to start everything off
 gameReset();
+playerMessageAstronaut();
 
 // get user guess
 document.onkeyup = function(userInput) {
     
-    getElem("playerMessage").textContent = "";
+    // display the astronaut as a default player message
+    playerMessageAstronaut();
     
     // clean user input
     userGuess = userInput.key;

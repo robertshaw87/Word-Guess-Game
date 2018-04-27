@@ -1,13 +1,16 @@
+/* gif as a background image, and reduce opacity of entire page to highlight background more */
 body {
     background-image: url("../images/background.gif");
     background-repeat: repeat;
     opacity: .9;
 }
 
+/* reduce opacity of header to be less intrusive */
 header {
     opacity: .8;
 }
 
+/* add animation to wins and losses cards upon load */
 #winsCard {
     animation-name: card-animation;
     animation-duration: .6s;
@@ -31,7 +34,7 @@ header {
     }
   }
 
-
+/* add animation to the progress indicator, up and down motion to emulate a nod of the head */
 .word-progress {
     animation-name: word-progress-animation;
     animation-duration: .4s;
@@ -52,6 +55,7 @@ header {
   }
 
 
+  /* add animation to the missed guesses, side to side motion to emulate a head shake with the new letters impacting the old ones */
 .guessed-letters {
     animation-name: guessed-letters-animation;
     animation-duration: .4s;
@@ -72,6 +76,7 @@ header {
     }
   }
 
+  /* add animation to the guesses left stars, they spin and grow */
   .guessesStar {
     animation-name: guesses-star-animation;
     animation-duration: .5s;
@@ -87,5 +92,26 @@ header {
       opacity: .8;
       transform: rotate(0deg);
       transform: scale(1);
+    }
+  }
+
+  #astronautPic {
+      animation-name: astronaut-animation;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+  }
+
+  @keyframes astronaut-animation {
+    0% {
+      transform: rotate(-.5deg);
+    }
+    25% {
+      transform: rotate(-10deg);
+    }
+    75% {
+      transform: rotate(10deg)
+    }
+    100% {
+      transform: rotate(.5deg);
     }
   }
