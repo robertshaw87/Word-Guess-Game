@@ -3,13 +3,14 @@ var wins = 0;
 var losses = 0;
 // this is the number of guesses the user has
 var guessesAllotted = 7;
+// these variables will be declared and used later
 var guessesLeft, guessedLetters, targetWord, userGuess, wordProgress;
 
 // make an array of the alphabet
 var alphabet = "abcdefghijklmnopqrstuvwxyz".toUpperCase();
 alphabet = alphabet.split("");
 
-// make an array of potential words
+// make an array of potential words (names of constellations)
 var dictionary = ["Eridanus", "Scorpius", "Crux", "Andromeda", "Cygnus", "Cepheus", 
                     "Draco", "Delphinus", "Pegasus", "Perseus", "Corvus", "Pisces", "Vela", "Aquila", "Serpens", 
                     "Phoenix", "Vulpecula", "Carina", "Hercules", "Hydra", "Delphinus", "Lyra"];
@@ -83,6 +84,7 @@ function gameReset() {
 }
 
 // append an empty col to the element passed in as an argument
+// used to more easily center a collection of elements that vary in number
 function appendEmptyCol(id){
     var emptyCol=$("<div>");
     emptyCol.attr("class", "col");
@@ -90,6 +92,7 @@ function appendEmptyCol(id){
 }
 
 // this function displays the progress the player has made towards the word
+// dynamically generates cards containing the letter
 function displayProgress() {
     var cardProgress = $("#wordProgress");
     cardProgress.empty();
@@ -110,6 +113,7 @@ function displayProgress() {
 }
 
 // display one star for each guess the player has left
+// dynamically generates elements
 function displayGuessesLeft() {
     var guessesStars = $("#guessesLeft");
     guessesStars.empty();
@@ -124,6 +128,7 @@ function displayGuessesLeft() {
 }
 
 // display the letters the player has already guessed
+// dynamically generates cards containing the letter
 function displayGuessedLetters(){
     var wrongGuesses = $("#guessedLetters");
     wrongGuesses.empty();
@@ -184,7 +189,6 @@ $(document).ready(function() {
                 }
             }
             displayProgress();
-            // getElem("wordProgress").textContent = wordProgress.join(" ");
 
             // check if word has been completed
             if (wordProgress.join("") === targetWord.join("")) {

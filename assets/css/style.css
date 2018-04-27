@@ -107,6 +107,7 @@ header {
     }
   }
 
+  /* make the astronaut dance! */
   #astronautPic {
       animation-name: astronaut-animation;
       animation-duration: 2s;
