@@ -34,9 +34,58 @@ header {
 
 .word-progress {
     animation-name: word-progress-animation;
-    animation-duration: .6s;
+    animation-duration: .4s;
 }
 
+@keyframes word-progress-animation {
+    0% {
+      opacity: .5;
+      transform: translateY(-50%);
+    }
+    50% {
+      transform: translateY(25%);
+    }
+    100% {
+      opacity: .9;
+      transform: translateY(0);
+    }
+  }
+
+
 .guessed-letters {
+    animation-name: guessed-letters-animation;
+    animation-duration: .4s;
     opacity: .7;
 }
+
+@keyframes guessed-letters-animation {
+    0% {
+      opacity: .5;
+      transform: translateX(50%);
+    }
+    50% {
+      transform: translateX(-25%);
+    }
+    100% {
+      opacity: .8;
+      transform: translateX(0);
+    }
+  }
+
+  .guessesStar {
+    animation-name: guesses-star-animation;
+    animation-duration: .5s;
+  }
+
+  @keyframes guesses-star-animation {
+    0% {
+      opacity: .5;
+      transform: rotate(360deg);
+      transform: scale(.5);
+    }
+    100% {
+      opacity: .8;
+      transform: rotate(0deg);
+      transform: scale(1);
+    }
+  }

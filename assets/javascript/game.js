@@ -126,7 +126,7 @@ function displayGuessesLeft() {
 
     for (var i=0; i<guessesLeft; i++){
         var starPic = $("<div>");
-        starPic.attr("class", "col-md-3 col-1 col-sm-1 m-0 p-0");
+        starPic.attr("class", "col-md-3 col-1 col-sm-1 m-0 p-0 guessesStar");
         starPic.append("<img height=auto width=100% src='assets/images/star.png' alt='star'>");
         console.log(starPic);
         guessesStars.append(starPic);
