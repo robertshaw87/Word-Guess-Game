@@ -151,67 +151,71 @@ function playerMessageAstronaut() {
     message.empty();
     message.append("<img id='astronautPic' height=120px width=auto src='assets/images/astronaut.png' alt='astronaut'>");
 }
-
-// reset the game to start everything off
-gameReset();
-playerMessageAstronaut();
-
-// get user guess
-document.onkeyup = function(userInput) {
-    
-    // display the astronaut as a default player message
+$(document).ready(function() {
+    // reset the game to start everything off
+    gameReset();
     playerMessageAstronaut();
-    
-    // clean user input
-    userGuess = userInput.key;
-    userGuess = userGuess.toUpperCase();
-    console.log("User Guess: " + userGuess);
 
-    // ignore any key that isn't a letter
-    if (-1 === alphabet.indexOf(userGuess)) {
-        getElem("playerMessage").textContent = "Please guess a letter between A-Z.";
-    } else if (-1 !== guessedLetters.indexOf(userGuess)) {
-        // check user input to make sure it is a new guess
-        getElem("playerMessage").textContent = "You have already guessed " + userGuess;
-    } else if (targetWord.indexOf(userGuess) !== -1) {
-        // if it is a letter within the correct word array,
-        // replace the correct placeholder characters in the guess array 
-        //  with the letter guessed
-        for (var i=0; i < targetWord.length; i++){
-            if (targetWord[i] === userGuess) {
-                wordProgress[i] = userGuess;
+    // lower the volume of the song so it's not deafening
+    $("#fireflySong")[0].volume=.2;
+
+    // get user guess
+    document.onkeyup = function(userInput) {
+        
+        // display the astronaut as a default player message
+        playerMessageAstronaut();
+        
+        // clean user input
+        userGuess = userInput.key;
+        userGuess = userGuess.toUpperCase();
+        console.log("User Guess: " + userGuess);
+
+        // ignore any key that isn't a letter
+        if (-1 === alphabet.indexOf(userGuess)) {
+            getElem("playerMessage").textContent = "Please guess a letter between A-Z.";
+        } else if (-1 !== guessedLetters.indexOf(userGuess)) {
+            // check user input to make sure it is a new guess
+            getElem("playerMessage").textContent = "You have already guessed " + userGuess;
+        } else if (targetWord.indexOf(userGuess) !== -1) {
+            // if it is a letter within the correct word array,
+            // replace the correct placeholder characters in the guess array 
+            //  with the letter guessed
+            for (var i=0; i < targetWord.length; i++){
+                if (targetWord[i] === userGuess) {
+                    wordProgress[i] = userGuess;
+                }
+            }
+            displayProgress();
+            // getElem("wordProgress").textContent = wordProgress.join(" ");
+
+            // check if word has been completed
+            if (wordProgress.join("") === targetWord.join("")) {
+                // add 1 to wins, reset game
+                wins += 1;
+                getElem("playerMessage").textContent = "You guessed the correct word! It was " + targetWord.join("") + "!";
+                gameReset();
+            }
+
+        } else {
+            // if it is not a correct letter,
+            // add guess to already guessed array, reduce guesses left
+            guessedLetters.push(userGuess);
+            guessesLeft -= 1;
+            displayGuessedLetters()
+            // getElem("playerChoices").textContent = guessedLetters.join(" ");
+
+            // if there are no guesses left, increment losses, reset game
+            if (guessesLeft <= 0){
+                losses += 1;
+                getElem("playerMessage").textContent = "You ran out of guesses! The correct word was " + targetWord.join("") + "!";
+                gameReset();
             }
         }
-        displayProgress();
-        // getElem("wordProgress").textContent = wordProgress.join(" ");
 
-        // check if word has been completed
-        if (wordProgress.join("") === targetWord.join("")) {
-            // add 1 to wins, reset game
-            wins += 1;
-            getElem("playerMessage").textContent = "You guessed the correct word! It was " + targetWord.join("") + "!";
-            gameReset();
-        }
+        getElem("wins").textContent = wins;
+        getElem("losses").textContent = losses;
+        displayGuessesLeft();
+        // getElem("guesses").textContent = guessesLeft;
 
-    } else {
-        // if it is not a correct letter,
-        // add guess to already guessed array, reduce guesses left
-        guessedLetters.push(userGuess);
-        guessesLeft -= 1;
-        displayGuessedLetters()
-        // getElem("playerChoices").textContent = guessedLetters.join(" ");
-
-        // if there are no guesses left, increment losses, reset game
-        if (guessesLeft <= 0){
-            losses += 1;
-            getElem("playerMessage").textContent = "You ran out of guesses! The correct word was " + targetWord.join("") + "!";
-            gameReset();
-        }
     }
-
-    getElem("wins").textContent = wins;
-    getElem("losses").textContent = losses;
-    displayGuessesLeft();
-    // getElem("guesses").textContent = guessesLeft;
-
-}
+});

@@ -37,16 +37,20 @@ header {
 /* add animation to the progress indicator, up and down motion to emulate a nod of the head */
 .word-progress {
     animation-name: word-progress-animation;
-    animation-duration: .4s;
+    animation-duration: .5s;
 }
 
 @keyframes word-progress-animation {
     0% {
-      opacity: .5;
-      transform: translateY(-50%);
+      opacity: .9;
+      transform: translateY(0deg);
     }
-    50% {
-      transform: translateY(25%);
+    33% {
+      opacity: .7;
+      transform: translateY(-20%);
+    }
+    75% {
+      transform: translateY(10%);
     }
     100% {
       opacity: .9;
@@ -103,7 +107,7 @@ header {
 
   @keyframes astronaut-animation {
     0% {
-      transform: rotate(-.5deg);
+      transform: rotate(0deg);
     }
     25% {
       transform: rotate(-10deg);
@@ -112,6 +116,6 @@ header {
       transform: rotate(10deg)
     }
     100% {
-      transform: rotate(.5deg);
+      transform: rotate(0deg);
     }
   }
