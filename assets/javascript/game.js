@@ -87,7 +87,8 @@ function gameReset() {
     getElem("losses").textContent = losses;
     // getElem("guesses").textContent = guessesLeft;
     displayGuessesLeft();
-    getElem("playerChoices").textContent = "";
+    displayGuessedLetters()
+    // getElem("playerChoices").textContent = "";
     displayProgress();
 }
 
@@ -106,7 +107,7 @@ function displayProgress() {
 
     for (var i=0; i<wordProgress.length; i++){
         var letterCard = $("<div>");
-        letterCard.attr("class","card m-1 p-1 pt-2 pb-2 col-md-1 bg-dark text-light");
+        letterCard.attr("class","card m-1 p-1 pt-2 pb-2 col-md-1 col-sm-1 bg-dark text-light word-progress");
         var cardText = $("<div>");
         cardText.attr("class", "card-text");
         var cardLetter = $("<h2>");
@@ -118,13 +119,14 @@ function displayProgress() {
     appendEmptyCol(cardProgress);
 }
 
+// display one star for each guess the player has left
 function displayGuessesLeft() {
-    var guessesStars = $("#guesses");
+    var guessesStars = $("#guessesLeft");
     guessesStars.empty();
 
     for (var i=0; i<guessesLeft; i++){
         var starPic = $("<div>");
-        starPic.attr("class", "col-md-3 m-0 p-0");
+        starPic.attr("class", "col-md-3 col-sm-1 m-0 p-0");
         starPic.append("<img height=auto width=100% src='assets/images/star.png' alt='star'>");
         console.log(starPic);
         guessesStars.append(starPic);
@@ -132,6 +134,29 @@ function displayGuessesLeft() {
 
 }
 
+// display the letters the player has already guessed
+function displayGuessedLetters(){
+    var wrongGuesses = $("#guessedLetters");
+    wrongGuesses.empty();
+    appendEmptyCol(wrongGuesses);
+
+    for (var i=0; i<guessedLetters.length; i++){
+        var letterCard = $("<div>");
+        letterCard.attr("class","card m-1 p-0 pt-3 pb-2 col-md-1 col-sm-1 bg-danger text-light guessed-letters");
+        var cardText = $("<div>");
+        cardText.attr("class", "card-text");
+        var cardLetter = $("<h4>");
+        cardLetter.text(guessedLetters[i]);
+        cardText.append(cardLetter);
+        letterCard.append(cardText);
+        wrongGuesses.append(letterCard);
+    }
+
+    appendEmptyCol(wrongGuesses);
+}
+
+
+// reset the game to start everything off
 gameReset();
 
 // get user guess
@@ -175,7 +200,8 @@ document.onkeyup = function(userInput) {
         // add guess to already guessed array, reduce guesses left
         guessedLetters.push(userGuess);
         guessesLeft -= 1;
-        getElem("playerChoices").textContent = guessedLetters.join(" ");
+        displayGuessedLetters()
+        // getElem("playerChoices").textContent = guessedLetters.join(" ");
 
         // if there are no guesses left, increment losses, reset game
         if (guessesLeft <= 0){
