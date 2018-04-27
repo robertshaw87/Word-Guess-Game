@@ -1,4 +1,42 @@
 body {
     background-image: url("../images/background.gif");
     background-repeat: repeat;
+    opacity: .9;
+}
+
+header {
+    opacity: .8;
+}
+
+#winsCard {
+    animation-name: card-animation;
+    animation-duration: .6s;
+    opacity: .8;
+}
+
+#lossesCard {
+    animation-name: card-animation;
+    animation-duration: .6s;
+    opacity: .8;
+}
+
+@keyframes card-animation {
+    0% {
+      opacity: .5;
+      transform: scale(0);
+    }
+    100% {
+      opacity: .8;
+      transform: scale(1);
+    }
+  }
+
+
+.word-progress {
+    animation-name: word-progress-animation;
+    animation-duration: .6s;
+}
+
+.guessed-letters {
+    opacity: .7;
 }
