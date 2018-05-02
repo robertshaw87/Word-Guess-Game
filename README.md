@@ -34,6 +34,12 @@ There are messages logged to the console if you want to see some of the debuggin
 
 ## Built With
 
+* Html
+
+* CSS
+
+* [Javascript](https://www.javascript.com/) - Scripting language used
+
 * [BootstrapCDN v4.1.0](https://getbootstrap.com/docs/4.1/getting-started/introduction/) - The web framework used
 
 * [jQuery v3.3.1](http://jquery.com/)
