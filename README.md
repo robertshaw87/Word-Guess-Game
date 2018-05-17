@@ -44,6 +44,10 @@ There are messages logged to the console if you want to see some of the debuggin
 
 * [jQuery v3.3.1](http://jquery.com/)
 
+## Challenges
+
+This was my first foray into dynamically generating html elements and I loved it. So many possibilities are available now that I'm not tied down to static html elements. I got a lot of practice with jQuery in on this app, and I'm starting to feel comfortable with it. There's just so much functionality and convenience packed into this library!
+
 ## Authors
 
 * **Robert Shaw** - *Initial work* - [robertshaw87](https://github.com/robertshaw87)
