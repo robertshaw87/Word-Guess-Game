@@ -1,4 +1,4 @@
-# Word Guess Game
+# Explore the Stars
 Game made with BootstrapCDN v4.1.0
 
 Guess the chosen word one letter at a time! Your guesses are limited, so choose wisely!
